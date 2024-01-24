@@ -1,0 +1,44 @@
+
+<%= render 'users/info', books: @books %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-8">
+<table class="table table-striped">
+<h1>Books投稿一覧</h1>
+<div class="container">
+  <div class="row">
+  <thead>
+    <tr>
+      <th></th>
+      <th>本のタイトル</th>
+      <th>感想</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @books.each do |book| %>
+  <div>
+    <%= link_to book_path(book.id) do %>
+      <%= image_tag book.get_image %>
+    <% end %>
+  </div>
+
+    <tr>
+      <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+      <td><%= link_to book.title, book_path(book) %></td>
+      <td><%= book.body %></td>
+
+<% end %>
+    </tr>
+  </tbody>
+</table>
+    </div>
+ </div>
+</div>
+
+
+
+
