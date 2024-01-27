@@ -1,16 +1,39 @@
-<h1>Books#show</h1>
 <div>
-  <p>投稿ユーザー画像：<%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <%= image_tag @book.get_image %>
-  <p>本のタイトル：<%= @book.title %></p>
-  <p>感想：<%= @book.body %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "編集", edit_book_path(@book) %>
-  <% end %>
-  <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
-  <% end %>
+  <%= flash[:notice] %>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+<%= render 'users/info', user: @book.user, book: @cat %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+<h1>Book detail</h1>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(@book.user) do %>
+        <%= image_tag @book.user.get_profile_image(100, 100) %>
+        <%= @book.user.name %>
+        <% end %>
+      </td>
+      <td><%= @book.title %></td>
+      <td><%= @book.body %></td>
+      <td>
+        <% if @book.user == current_user %>
+          <%= link_to "Edit", edit_book_path(@book) %>
+        <% end %>
+      </td>
+      <td>
+        <% if @book.user == current_user %>
+          <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
 </div>

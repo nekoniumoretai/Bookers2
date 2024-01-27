@@ -1,25 +1,38 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <main>
   <div class="container">
     <div class="row">
       <div class="mx-auto">
         <h1>
           Welcome to
+          <i class="fa-solid fa-book"></i>
           <storong>Bookers</storong>
           !!
         </h1>
         <p>
-          In<storong>Bookers</storong>,
+          In
+          <i class="fa-solid fa-book"></i>
+          <storong>Bookers</storong>,
         </p>
         <p>you can share and exchage your opinions , inpressions , and emotions</p>
         <p>about various books!</p>
+        
         <div class="row">
           <li>
-            <%= link_to "Log in", new_user_session_path %>
+            <%= link_to new_user_session_path do %>
+            Log in
+            <% end %>
           </li>
         </div>
+        
         <div class="row">
           <li>
-            <%= link_to "Sign up", new_user_registration_path %>
+            <%= link_to new_user_registration_path do %>
+            Sign up
+            <% end %>
           </li>
         </div>
       </div>
